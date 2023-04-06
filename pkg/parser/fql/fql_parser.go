@@ -1,4 +1,4 @@
-// Code generated from antlr/FqlParser.g4 by ANTLR 4.10.1. DO NOT EDIT.
+// Code generated from antlr/FqlParser.g4 by ANTLR 4.12.0. DO NOT EDIT.
 
 package fql // FqlParser
 import (
@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
 )
 
 // Suppress unused import errors
@@ -582,6 +582,11 @@ type IProgramContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Body() IBodyContext
+	AllHead() []IHeadContext
+	Head(i int) IHeadContext
+
 	// IsProgramContext differentiates from other interfaces.
 	IsProgramContext()
 }
@@ -757,6 +762,9 @@ type IHeadContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	UseExpression() IUseExpressionContext
+
 	// IsHeadContext differentiates from other interfaces.
 	IsHeadContext()
 }
@@ -873,6 +881,9 @@ type IUseExpressionContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Use() IUseContext
+
 	// IsUseExpressionContext differentiates from other interfaces.
 	IsUseExpressionContext()
 }
@@ -988,6 +999,10 @@ type IUseContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Use() antlr.TerminalNode
+	NamespaceIdentifier() INamespaceIdentifierContext
 
 	// IsUseContext differentiates from other interfaces.
 	IsUseContext()
@@ -1112,6 +1127,11 @@ type IBodyContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	BodyExpression() IBodyExpressionContext
+	AllBodyStatement() []IBodyStatementContext
+	BodyStatement(i int) IBodyStatementContext
 
 	// IsBodyContext differentiates from other interfaces.
 	IsBodyContext()
@@ -1287,6 +1307,12 @@ type IBodyStatementContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	VariableDeclaration() IVariableDeclarationContext
+	FunctionCallExpression() IFunctionCallExpressionContext
+	WaitForExpression() IWaitForExpressionContext
+	DispatchEventExpression() IDispatchEventExpressionContext
 
 	// IsBodyStatementContext differentiates from other interfaces.
 	IsBodyStatementContext()
@@ -1479,6 +1505,10 @@ type IBodyExpressionContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	ReturnExpression() IReturnExpressionContext
+	ForExpression() IForExpressionContext
+
 	// IsBodyExpressionContext differentiates from other interfaces.
 	IsBodyExpressionContext()
 }
@@ -1632,6 +1662,14 @@ type IVariableDeclarationContext interface {
 
 	// SetId sets the id token.
 	SetId(antlr.Token)
+
+	// Getter signatures
+	Let() antlr.TerminalNode
+	Assign() antlr.TerminalNode
+	Expression() IExpressionContext
+	Identifier() antlr.TerminalNode
+	IgnoreIdentifier() antlr.TerminalNode
+	SafeReservedWord() ISafeReservedWordContext
 
 	// IsVariableDeclarationContext differentiates from other interfaces.
 	IsVariableDeclarationContext()
@@ -1838,6 +1876,11 @@ type IReturnExpressionContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Return() antlr.TerminalNode
+	Expression() IExpressionContext
+	Distinct() antlr.TerminalNode
+
 	// IsReturnExpressionContext differentiates from other interfaces.
 	IsReturnExpressionContext()
 }
@@ -1987,6 +2030,21 @@ type IForExpressionContext interface {
 
 	// SetCounterVariable sets the counterVariable token.
 	SetCounterVariable(antlr.Token)
+
+	// Getter signatures
+	For() antlr.TerminalNode
+	In() antlr.TerminalNode
+	ForExpressionSource() IForExpressionSourceContext
+	ForExpressionReturn() IForExpressionReturnContext
+	AllIdentifier() []antlr.TerminalNode
+	Identifier(i int) antlr.TerminalNode
+	IgnoreIdentifier() antlr.TerminalNode
+	Comma() antlr.TerminalNode
+	AllForExpressionBody() []IForExpressionBodyContext
+	ForExpressionBody(i int) IForExpressionBodyContext
+	While() antlr.TerminalNode
+	Expression() IExpressionContext
+	Do() antlr.TerminalNode
 
 	// IsForExpressionContext differentiates from other interfaces.
 	IsForExpressionContext()
@@ -2356,6 +2414,15 @@ type IForExpressionSourceContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	FunctionCallExpression() IFunctionCallExpressionContext
+	ArrayLiteral() IArrayLiteralContext
+	ObjectLiteral() IObjectLiteralContext
+	Variable() IVariableContext
+	MemberExpression() IMemberExpressionContext
+	RangeOperator() IRangeOperatorContext
+	Param() IParamContext
+
 	// IsForExpressionSourceContext differentiates from other interfaces.
 	IsForExpressionSourceContext()
 }
@@ -2616,6 +2683,12 @@ type IForExpressionClauseContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	LimitClause() ILimitClauseContext
+	SortClause() ISortClauseContext
+	FilterClause() IFilterClauseContext
+	CollectClause() ICollectClauseContext
+
 	// IsForExpressionClauseContext differentiates from other interfaces.
 	IsForExpressionClauseContext()
 }
@@ -2810,6 +2883,10 @@ type IForExpressionStatementContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	VariableDeclaration() IVariableDeclarationContext
+	FunctionCallExpression() IFunctionCallExpressionContext
+
 	// IsForExpressionStatementContext differentiates from other interfaces.
 	IsForExpressionStatementContext()
 }
@@ -2955,6 +3032,10 @@ type IForExpressionBodyContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	ForExpressionStatement() IForExpressionStatementContext
+	ForExpressionClause() IForExpressionClauseContext
+
 	// IsForExpressionBodyContext differentiates from other interfaces.
 	IsForExpressionBodyContext()
 }
@@ -3099,6 +3180,10 @@ type IForExpressionReturnContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	ReturnExpression() IReturnExpressionContext
+	ForExpression() IForExpressionContext
 
 	// IsForExpressionReturnContext differentiates from other interfaces.
 	IsForExpressionReturnContext()
@@ -3248,6 +3333,10 @@ type IFilterClauseContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Filter() antlr.TerminalNode
+	Expression() IExpressionContext
+
 	// IsFilterClauseContext differentiates from other interfaces.
 	IsFilterClauseContext()
 }
@@ -3371,6 +3460,12 @@ type ILimitClauseContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Limit() antlr.TerminalNode
+	AllLimitClauseValue() []ILimitClauseValueContext
+	LimitClauseValue(i int) ILimitClauseValueContext
+	Comma() antlr.TerminalNode
 
 	// IsLimitClauseContext differentiates from other interfaces.
 	IsLimitClauseContext()
@@ -3540,6 +3635,13 @@ type ILimitClauseValueContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	IntegerLiteral() IIntegerLiteralContext
+	Param() IParamContext
+	Variable() IVariableContext
+	FunctionCallExpression() IFunctionCallExpressionContext
+	MemberExpression() IMemberExpressionContext
 
 	// IsLimitClauseValueContext differentiates from other interfaces.
 	IsLimitClauseValueContext()
@@ -3755,6 +3857,13 @@ type ISortClauseContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Sort() antlr.TerminalNode
+	AllSortClauseExpression() []ISortClauseExpressionContext
+	SortClauseExpression(i int) ISortClauseExpressionContext
+	AllComma() []antlr.TerminalNode
+	Comma(i int) antlr.TerminalNode
+
 	// IsSortClauseContext differentiates from other interfaces.
 	IsSortClauseContext()
 }
@@ -3931,6 +4040,10 @@ type ISortClauseExpressionContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Expression() IExpressionContext
+	SortDirection() antlr.TerminalNode
+
 	// IsSortClauseExpressionContext differentiates from other interfaces.
 	IsSortClauseExpressionContext()
 }
@@ -4060,6 +4173,13 @@ type ICollectClauseContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Collect() antlr.TerminalNode
+	CollectCounter() ICollectCounterContext
+	CollectAggregator() ICollectAggregatorContext
+	CollectGrouping() ICollectGroupingContext
+	CollectGroupVariable() ICollectGroupVariableContext
 
 	// IsCollectClauseContext differentiates from other interfaces.
 	IsCollectClauseContext()
@@ -4306,6 +4426,11 @@ type ICollectSelectorContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Identifier() antlr.TerminalNode
+	Assign() antlr.TerminalNode
+	Expression() IExpressionContext
+
 	// IsCollectSelectorContext differentiates from other interfaces.
 	IsCollectSelectorContext()
 }
@@ -4437,6 +4562,12 @@ type ICollectGroupingContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllCollectSelector() []ICollectSelectorContext
+	CollectSelector(i int) ICollectSelectorContext
+	AllComma() []antlr.TerminalNode
+	Comma(i int) antlr.TerminalNode
 
 	// IsCollectGroupingContext differentiates from other interfaces.
 	IsCollectGroupingContext()
@@ -4605,6 +4736,13 @@ type ICollectAggregatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Aggregate() antlr.TerminalNode
+	AllCollectAggregateSelector() []ICollectAggregateSelectorContext
+	CollectAggregateSelector(i int) ICollectAggregateSelectorContext
+	AllComma() []antlr.TerminalNode
+	Comma(i int) antlr.TerminalNode
 
 	// IsCollectAggregatorContext differentiates from other interfaces.
 	IsCollectAggregatorContext()
@@ -4782,6 +4920,11 @@ type ICollectAggregateSelectorContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Identifier() antlr.TerminalNode
+	Assign() antlr.TerminalNode
+	FunctionCallExpression() IFunctionCallExpressionContext
+
 	// IsCollectAggregateSelectorContext differentiates from other interfaces.
 	IsCollectAggregateSelectorContext()
 }
@@ -4913,6 +5056,13 @@ type ICollectGroupVariableContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Into() antlr.TerminalNode
+	CollectSelector() ICollectSelectorContext
+	AllIdentifier() []antlr.TerminalNode
+	Identifier(i int) antlr.TerminalNode
+	Keep() antlr.TerminalNode
 
 	// IsCollectGroupVariableContext differentiates from other interfaces.
 	IsCollectGroupVariableContext()
@@ -5081,6 +5231,12 @@ type ICollectCounterContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	With() antlr.TerminalNode
+	Count() antlr.TerminalNode
+	Into() antlr.TerminalNode
+	Identifier() antlr.TerminalNode
+
 	// IsCollectCounterContext differentiates from other interfaces.
 	IsCollectCounterContext()
 }
@@ -5208,6 +5364,16 @@ type IWaitForExpressionContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Waitfor() antlr.TerminalNode
+	Event() antlr.TerminalNode
+	EventName() IEventNameContext
+	In() antlr.TerminalNode
+	EventSource() IEventSourceContext
+	OptionsClause() IOptionsClauseContext
+	FilterClause() IFilterClauseContext
+	TimeoutClause() ITimeoutClauseContext
 
 	// IsWaitForExpressionContext differentiates from other interfaces.
 	IsWaitForExpressionContext()
@@ -5446,6 +5612,17 @@ type IDispatchEventExpressionContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Dispatch() antlr.TerminalNode
+	EventName() IEventNameContext
+	In() antlr.TerminalNode
+	EventSource() IEventSourceContext
+	With() antlr.TerminalNode
+	EventArguments() IEventArgumentsContext
+	OptionsClause() IOptionsClauseContext
+	FilterClause() IFilterClauseContext
+	TimeoutClause() ITimeoutClauseContext
 
 	// IsDispatchEventExpressionContext differentiates from other interfaces.
 	IsDispatchEventExpressionContext()
@@ -5711,6 +5888,13 @@ type IEventNameContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	StringLiteral() IStringLiteralContext
+	Variable() IVariableContext
+	Param() IParamContext
+	FunctionCallExpression() IFunctionCallExpressionContext
+	MemberExpression() IMemberExpressionContext
+
 	// IsEventNameContext differentiates from other interfaces.
 	IsEventNameContext()
 }
@@ -5928,6 +6112,11 @@ type IEventSourceContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	FunctionCallExpression() IFunctionCallExpressionContext
+	Variable() IVariableContext
+	MemberExpression() IMemberExpressionContext
+
 	// IsEventSourceContext differentiates from other interfaces.
 	IsEventSourceContext()
 }
@@ -6095,6 +6284,13 @@ type IEventArgumentsContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Literal() ILiteralContext
+	Variable() IVariableContext
+	Param() IParamContext
+	FunctionCallExpression() IFunctionCallExpressionContext
+	MemberExpression() IMemberExpressionContext
 
 	// IsEventArgumentsContext differentiates from other interfaces.
 	IsEventArgumentsContext()
@@ -6310,6 +6506,10 @@ type IOptionsClauseContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Options() antlr.TerminalNode
+	ObjectLiteral() IObjectLiteralContext
+
 	// IsOptionsClauseContext differentiates from other interfaces.
 	IsOptionsClauseContext()
 }
@@ -6433,6 +6633,14 @@ type ITimeoutClauseContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Timeout() antlr.TerminalNode
+	IntegerLiteral() IIntegerLiteralContext
+	Variable() IVariableContext
+	Param() IParamContext
+	MemberExpression() IMemberExpressionContext
+	FunctionCall() IFunctionCallContext
 
 	// IsTimeoutClauseContext differentiates from other interfaces.
 	IsTimeoutClauseContext()
@@ -6652,6 +6860,11 @@ type IParamContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Param() antlr.TerminalNode
+	Identifier() antlr.TerminalNode
+	SafeReservedWord() ISafeReservedWordContext
+
 	// IsParamContext differentiates from other interfaces.
 	IsParamContext()
 }
@@ -6797,6 +7010,10 @@ type IVariableContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Identifier() antlr.TerminalNode
+	SafeReservedWord() ISafeReservedWordContext
+
 	// IsVariableContext differentiates from other interfaces.
 	IsVariableContext()
 }
@@ -6932,6 +7149,15 @@ type ILiteralContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	ArrayLiteral() IArrayLiteralContext
+	ObjectLiteral() IObjectLiteralContext
+	BooleanLiteral() IBooleanLiteralContext
+	StringLiteral() IStringLiteralContext
+	FloatLiteral() IFloatLiteralContext
+	IntegerLiteral() IIntegerLiteralContext
+	NoneLiteral() INoneLiteralContext
 
 	// IsLiteralContext differentiates from other interfaces.
 	IsLiteralContext()
@@ -7196,6 +7422,11 @@ type IArrayLiteralContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	OpenBracket() antlr.TerminalNode
+	CloseBracket() antlr.TerminalNode
+	ArgumentList() IArgumentListContext
+
 	// IsArrayLiteralContext differentiates from other interfaces.
 	IsArrayLiteralContext()
 }
@@ -7314,7 +7545,7 @@ func (p *FqlParser) ArrayLiteral() (localctx IArrayLiteralContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if (((_la-9)&-(0x1f+1)) == 0 && ((1<<uint((_la-9)))&((1<<(FqlParserOpenBracket-9))|(1<<(FqlParserOpenParen-9))|(1<<(FqlParserOpenBrace-9))|(1<<(FqlParserPlus-9))|(1<<(FqlParserMinus-9))|(1<<(FqlParserAnd-9))|(1<<(FqlParserOr-9))|(1<<(FqlParserFor-9))|(1<<(FqlParserReturn-9))|(1<<(FqlParserWaitfor-9))|(1<<(FqlParserDispatch-9))|(1<<(FqlParserOptions-9))|(1<<(FqlParserTimeout-9)))) != 0) || (((_la-41)&-(0x1f+1)) == 0 && ((1<<uint((_la-41)))&((1<<(FqlParserDistinct-41))|(1<<(FqlParserFilter-41))|(1<<(FqlParserCurrent-41))|(1<<(FqlParserSort-41))|(1<<(FqlParserLimit-41))|(1<<(FqlParserLet-41))|(1<<(FqlParserCollect-41))|(1<<(FqlParserSortDirection-41))|(1<<(FqlParserNone-41))|(1<<(FqlParserNull-41))|(1<<(FqlParserBooleanLiteral-41))|(1<<(FqlParserUse-41))|(1<<(FqlParserInto-41))|(1<<(FqlParserKeep-41))|(1<<(FqlParserWith-41))|(1<<(FqlParserCount-41))|(1<<(FqlParserAll-41))|(1<<(FqlParserAny-41))|(1<<(FqlParserAggregate-41))|(1<<(FqlParserEvent-41))|(1<<(FqlParserLike-41))|(1<<(FqlParserNot-41))|(1<<(FqlParserIn-41))|(1<<(FqlParserDo-41))|(1<<(FqlParserWhile-41))|(1<<(FqlParserParam-41))|(1<<(FqlParserIdentifier-41))|(1<<(FqlParserStringLiteral-41))|(1<<(FqlParserIntegerLiteral-41))|(1<<(FqlParserFloatLiteral-41))|(1<<(FqlParserNamespaceSegment-41)))) != 0) {
+	if (int64((_la-9)) & ^0x3f) == 0 && ((int64(1)<<(_la-9))&-576460752368861163) != 0 {
 		{
 			p.SetState(429)
 			p.ArgumentList()
@@ -7335,6 +7566,14 @@ type IObjectLiteralContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	OpenBrace() antlr.TerminalNode
+	CloseBrace() antlr.TerminalNode
+	AllPropertyAssignment() []IPropertyAssignmentContext
+	PropertyAssignment(i int) IPropertyAssignmentContext
+	AllComma() []antlr.TerminalNode
+	Comma(i int) antlr.TerminalNode
 
 	// IsObjectLiteralContext differentiates from other interfaces.
 	IsObjectLiteralContext()
@@ -7489,7 +7728,7 @@ func (p *FqlParser) ObjectLiteral() (localctx IObjectLiteralContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if (((_la-9)&-(0x1f+1)) == 0 && ((1<<uint((_la-9)))&((1<<(FqlParserOpenBracket-9))|(1<<(FqlParserAnd-9))|(1<<(FqlParserOr-9))|(1<<(FqlParserFor-9))|(1<<(FqlParserReturn-9))|(1<<(FqlParserWaitfor-9))|(1<<(FqlParserDispatch-9))|(1<<(FqlParserOptions-9))|(1<<(FqlParserTimeout-9)))) != 0) || (((_la-41)&-(0x1f+1)) == 0 && ((1<<uint((_la-41)))&((1<<(FqlParserDistinct-41))|(1<<(FqlParserFilter-41))|(1<<(FqlParserCurrent-41))|(1<<(FqlParserSort-41))|(1<<(FqlParserLimit-41))|(1<<(FqlParserLet-41))|(1<<(FqlParserCollect-41))|(1<<(FqlParserSortDirection-41))|(1<<(FqlParserNone-41))|(1<<(FqlParserNull-41))|(1<<(FqlParserBooleanLiteral-41))|(1<<(FqlParserUse-41))|(1<<(FqlParserInto-41))|(1<<(FqlParserKeep-41))|(1<<(FqlParserWith-41))|(1<<(FqlParserCount-41))|(1<<(FqlParserAll-41))|(1<<(FqlParserAny-41))|(1<<(FqlParserAggregate-41))|(1<<(FqlParserEvent-41))|(1<<(FqlParserLike-41))|(1<<(FqlParserNot-41))|(1<<(FqlParserIn-41))|(1<<(FqlParserDo-41))|(1<<(FqlParserWhile-41))|(1<<(FqlParserParam-41))|(1<<(FqlParserIdentifier-41))|(1<<(FqlParserStringLiteral-41)))) != 0) {
+	if (int64((_la-9)) & ^0x3f) == 0 && ((int64(1)<<(_la-9))&1729382256844734465) != 0 {
 		{
 			p.SetState(435)
 			p.PropertyAssignment()
@@ -7541,6 +7780,9 @@ type IBooleanLiteralContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	BooleanLiteral() antlr.TerminalNode
 
 	// IsBooleanLiteralContext differentiates from other interfaces.
 	IsBooleanLiteralContext()
@@ -7646,6 +7888,9 @@ type IStringLiteralContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	StringLiteral() antlr.TerminalNode
+
 	// IsStringLiteralContext differentiates from other interfaces.
 	IsStringLiteralContext()
 }
@@ -7749,6 +7994,9 @@ type IFloatLiteralContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	FloatLiteral() antlr.TerminalNode
 
 	// IsFloatLiteralContext differentiates from other interfaces.
 	IsFloatLiteralContext()
@@ -7854,6 +8102,9 @@ type IIntegerLiteralContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	IntegerLiteral() antlr.TerminalNode
+
 	// IsIntegerLiteralContext differentiates from other interfaces.
 	IsIntegerLiteralContext()
 }
@@ -7957,6 +8208,10 @@ type INoneLiteralContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Null() antlr.TerminalNode
+	None() antlr.TerminalNode
 
 	// IsNoneLiteralContext differentiates from other interfaces.
 	IsNoneLiteralContext()
@@ -8073,6 +8328,13 @@ type IPropertyAssignmentContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	PropertyName() IPropertyNameContext
+	Colon() antlr.TerminalNode
+	Expression() IExpressionContext
+	ComputedPropertyName() IComputedPropertyNameContext
+	Variable() IVariableContext
 
 	// IsPropertyAssignmentContext differentiates from other interfaces.
 	IsPropertyAssignmentContext()
@@ -8278,6 +8540,11 @@ type IComputedPropertyNameContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	OpenBracket() antlr.TerminalNode
+	Expression() IExpressionContext
+	CloseBracket() antlr.TerminalNode
+
 	// IsComputedPropertyNameContext differentiates from other interfaces.
 	IsComputedPropertyNameContext()
 }
@@ -8409,6 +8676,13 @@ type IPropertyNameContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Identifier() antlr.TerminalNode
+	StringLiteral() IStringLiteralContext
+	Param() IParamContext
+	SafeReservedWord() ISafeReservedWordContext
+	UnsafeReservedWord() IUnsafeReservedWordContext
 
 	// IsPropertyNameContext differentiates from other interfaces.
 	IsPropertyNameContext()
@@ -8615,6 +8889,10 @@ type INamespaceIdentifierContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Namespace() INamespaceContext
+	Identifier() antlr.TerminalNode
+
 	// IsNamespaceIdentifierContext differentiates from other interfaces.
 	IsNamespaceIdentifierContext()
 }
@@ -8739,6 +9017,10 @@ type INamespaceContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	AllNamespaceSegment() []antlr.TerminalNode
+	NamespaceSegment(i int) antlr.TerminalNode
+
 	// IsNamespaceContext differentiates from other interfaces.
 	IsNamespaceContext()
 }
@@ -8857,6 +9139,11 @@ type IMemberExpressionContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	MemberExpressionSource() IMemberExpressionSourceContext
+	AllMemberExpressionPath() []IMemberExpressionPathContext
+	MemberExpressionPath(i int) IMemberExpressionPathContext
 
 	// IsMemberExpressionContext differentiates from other interfaces.
 	IsMemberExpressionContext()
@@ -9035,6 +9322,13 @@ type IMemberExpressionSourceContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Variable() IVariableContext
+	Param() IParamContext
+	ArrayLiteral() IArrayLiteralContext
+	ObjectLiteral() IObjectLiteralContext
+	FunctionCall() IFunctionCallContext
 
 	// IsMemberExpressionSourceContext differentiates from other interfaces.
 	IsMemberExpressionSourceContext()
@@ -9250,6 +9544,10 @@ type IFunctionCallExpressionContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	FunctionCall() IFunctionCallContext
+	ErrorOperator() IErrorOperatorContext
+
 	// IsFunctionCallExpressionContext differentiates from other interfaces.
 	IsFunctionCallExpressionContext()
 }
@@ -9391,6 +9689,13 @@ type IFunctionCallContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Namespace() INamespaceContext
+	FunctionName() IFunctionNameContext
+	OpenParen() antlr.TerminalNode
+	CloseParen() antlr.TerminalNode
+	ArgumentList() IArgumentListContext
 
 	// IsFunctionCallContext differentiates from other interfaces.
 	IsFunctionCallContext()
@@ -9550,7 +9855,7 @@ func (p *FqlParser) FunctionCall() (localctx IFunctionCallContext) {
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if (((_la-9)&-(0x1f+1)) == 0 && ((1<<uint((_la-9)))&((1<<(FqlParserOpenBracket-9))|(1<<(FqlParserOpenParen-9))|(1<<(FqlParserOpenBrace-9))|(1<<(FqlParserPlus-9))|(1<<(FqlParserMinus-9))|(1<<(FqlParserAnd-9))|(1<<(FqlParserOr-9))|(1<<(FqlParserFor-9))|(1<<(FqlParserReturn-9))|(1<<(FqlParserWaitfor-9))|(1<<(FqlParserDispatch-9))|(1<<(FqlParserOptions-9))|(1<<(FqlParserTimeout-9)))) != 0) || (((_la-41)&-(0x1f+1)) == 0 && ((1<<uint((_la-41)))&((1<<(FqlParserDistinct-41))|(1<<(FqlParserFilter-41))|(1<<(FqlParserCurrent-41))|(1<<(FqlParserSort-41))|(1<<(FqlParserLimit-41))|(1<<(FqlParserLet-41))|(1<<(FqlParserCollect-41))|(1<<(FqlParserSortDirection-41))|(1<<(FqlParserNone-41))|(1<<(FqlParserNull-41))|(1<<(FqlParserBooleanLiteral-41))|(1<<(FqlParserUse-41))|(1<<(FqlParserInto-41))|(1<<(FqlParserKeep-41))|(1<<(FqlParserWith-41))|(1<<(FqlParserCount-41))|(1<<(FqlParserAll-41))|(1<<(FqlParserAny-41))|(1<<(FqlParserAggregate-41))|(1<<(FqlParserEvent-41))|(1<<(FqlParserLike-41))|(1<<(FqlParserNot-41))|(1<<(FqlParserIn-41))|(1<<(FqlParserDo-41))|(1<<(FqlParserWhile-41))|(1<<(FqlParserParam-41))|(1<<(FqlParserIdentifier-41))|(1<<(FqlParserStringLiteral-41))|(1<<(FqlParserIntegerLiteral-41))|(1<<(FqlParserFloatLiteral-41))|(1<<(FqlParserNamespaceSegment-41)))) != 0) {
+	if (int64((_la-9)) & ^0x3f) == 0 && ((int64(1)<<(_la-9))&-576460752368861163) != 0 {
 		{
 			p.SetState(511)
 			p.ArgumentList()
@@ -9571,6 +9876,11 @@ type IFunctionNameContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Identifier() antlr.TerminalNode
+	SafeReservedWord() ISafeReservedWordContext
+	UnsafeReservedWord() IUnsafeReservedWordContext
 
 	// IsFunctionNameContext differentiates from other interfaces.
 	IsFunctionNameContext()
@@ -9730,6 +10040,12 @@ type IArgumentListContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	AllExpression() []IExpressionContext
+	Expression(i int) IExpressionContext
+	AllComma() []antlr.TerminalNode
+	Comma(i int) antlr.TerminalNode
 
 	// IsArgumentListContext differentiates from other interfaces.
 	IsArgumentListContext()
@@ -9913,6 +10229,12 @@ type IMemberExpressionPathContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Dot() antlr.TerminalNode
+	PropertyName() IPropertyNameContext
+	ErrorOperator() IErrorOperatorContext
+	ComputedPropertyName() IComputedPropertyNameContext
 
 	// IsMemberExpressionPathContext differentiates from other interfaces.
 	IsMemberExpressionPathContext()
@@ -10110,6 +10432,27 @@ type ISafeReservedWordContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	And() antlr.TerminalNode
+	Or() antlr.TerminalNode
+	Distinct() antlr.TerminalNode
+	Filter() antlr.TerminalNode
+	Sort() antlr.TerminalNode
+	Limit() antlr.TerminalNode
+	Collect() antlr.TerminalNode
+	SortDirection() antlr.TerminalNode
+	Into() antlr.TerminalNode
+	Keep() antlr.TerminalNode
+	With() antlr.TerminalNode
+	Count() antlr.TerminalNode
+	All() antlr.TerminalNode
+	Any() antlr.TerminalNode
+	Aggregate() antlr.TerminalNode
+	Event() antlr.TerminalNode
+	Timeout() antlr.TerminalNode
+	Options() antlr.TerminalNode
+	Current() antlr.TerminalNode
+
 	// IsSafeReservedWordContext differentiates from other interfaces.
 	IsSafeReservedWordContext()
 }
@@ -10276,7 +10619,7 @@ func (p *FqlParser) SafeReservedWord() (localctx ISafeReservedWordContext) {
 		p.SetState(545)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == FqlParserAnd || _la == FqlParserOr || (((_la-39)&-(0x1f+1)) == 0 && ((1<<uint((_la-39)))&((1<<(FqlParserOptions-39))|(1<<(FqlParserTimeout-39))|(1<<(FqlParserDistinct-39))|(1<<(FqlParserFilter-39))|(1<<(FqlParserCurrent-39))|(1<<(FqlParserSort-39))|(1<<(FqlParserLimit-39))|(1<<(FqlParserCollect-39))|(1<<(FqlParserSortDirection-39))|(1<<(FqlParserInto-39))|(1<<(FqlParserKeep-39))|(1<<(FqlParserWith-39))|(1<<(FqlParserCount-39))|(1<<(FqlParserAll-39))|(1<<(FqlParserAny-39))|(1<<(FqlParserAggregate-39))|(1<<(FqlParserEvent-39)))) != 0)) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&2297327842217689088) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -10293,6 +10636,22 @@ type IUnsafeReservedWordContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Return() antlr.TerminalNode
+	None() antlr.TerminalNode
+	Null() antlr.TerminalNode
+	Let() antlr.TerminalNode
+	Use() antlr.TerminalNode
+	Waitfor() antlr.TerminalNode
+	Dispatch() antlr.TerminalNode
+	While() antlr.TerminalNode
+	Do() antlr.TerminalNode
+	In() antlr.TerminalNode
+	Like() antlr.TerminalNode
+	Not() antlr.TerminalNode
+	For() antlr.TerminalNode
+	BooleanLiteral() antlr.TerminalNode
 
 	// IsUnsafeReservedWordContext differentiates from other interfaces.
 	IsUnsafeReservedWordContext()
@@ -10440,7 +10799,7 @@ func (p *FqlParser) UnsafeReservedWord() (localctx IUnsafeReservedWordContext) {
 		p.SetState(547)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la-35)&-(0x1f+1)) == 0 && ((1<<uint((_la-35)))&((1<<(FqlParserFor-35))|(1<<(FqlParserReturn-35))|(1<<(FqlParserWaitfor-35))|(1<<(FqlParserDispatch-35))|(1<<(FqlParserLet-35))|(1<<(FqlParserNone-35))|(1<<(FqlParserNull-35))|(1<<(FqlParserBooleanLiteral-35))|(1<<(FqlParserUse-35))|(1<<(FqlParserLike-35))|(1<<(FqlParserNot-35))|(1<<(FqlParserIn-35))|(1<<(FqlParserDo-35))|(1<<(FqlParserWhile-35)))) != 0) {
+		if !((int64((_la-35)) & ^0x3f) == 0 && ((int64(1)<<(_la-35))&2080622607) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -10469,6 +10828,11 @@ type IRangeOperatorContext interface {
 
 	// SetRight sets the right rule contexts.
 	SetRight(IRangeOperandContext)
+
+	// Getter signatures
+	Range() antlr.TerminalNode
+	AllRangeOperand() []IRangeOperandContext
+	RangeOperand(i int) IRangeOperandContext
 
 	// IsRangeOperatorContext differentiates from other interfaces.
 	IsRangeOperatorContext()
@@ -10638,6 +11002,11 @@ type IRangeOperandContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	IntegerLiteral() IIntegerLiteralContext
+	Variable() IVariableContext
+	Param() IParamContext
 
 	// IsRangeOperandContext differentiates from other interfaces.
 	IsRangeOperandContext()
@@ -10845,6 +11214,16 @@ type IExpressionContext interface {
 
 	// SetOnFalse sets the onFalse rule contexts.
 	SetOnFalse(IExpressionContext)
+
+	// Getter signatures
+	UnaryOperator() IUnaryOperatorContext
+	AllExpression() []IExpressionContext
+	Expression(i int) IExpressionContext
+	Predicate() IPredicateContext
+	LogicalAndOperator() ILogicalAndOperatorContext
+	LogicalOrOperator() ILogicalOrOperatorContext
+	Colon() antlr.TerminalNode
+	QuestionMark() antlr.TerminalNode
 
 	// IsExpressionContext differentiates from other interfaces.
 	IsExpressionContext()
@@ -11185,7 +11564,7 @@ func (p *FqlParser) expression(_p int) (localctx IExpressionContext) {
 				p.GetErrorHandler().Sync(p)
 				_la = p.GetTokenStream().LA(1)
 
-				if (((_la-9)&-(0x1f+1)) == 0 && ((1<<uint((_la-9)))&((1<<(FqlParserOpenBracket-9))|(1<<(FqlParserOpenParen-9))|(1<<(FqlParserOpenBrace-9))|(1<<(FqlParserPlus-9))|(1<<(FqlParserMinus-9))|(1<<(FqlParserAnd-9))|(1<<(FqlParserOr-9))|(1<<(FqlParserFor-9))|(1<<(FqlParserReturn-9))|(1<<(FqlParserWaitfor-9))|(1<<(FqlParserDispatch-9))|(1<<(FqlParserOptions-9))|(1<<(FqlParserTimeout-9)))) != 0) || (((_la-41)&-(0x1f+1)) == 0 && ((1<<uint((_la-41)))&((1<<(FqlParserDistinct-41))|(1<<(FqlParserFilter-41))|(1<<(FqlParserCurrent-41))|(1<<(FqlParserSort-41))|(1<<(FqlParserLimit-41))|(1<<(FqlParserLet-41))|(1<<(FqlParserCollect-41))|(1<<(FqlParserSortDirection-41))|(1<<(FqlParserNone-41))|(1<<(FqlParserNull-41))|(1<<(FqlParserBooleanLiteral-41))|(1<<(FqlParserUse-41))|(1<<(FqlParserInto-41))|(1<<(FqlParserKeep-41))|(1<<(FqlParserWith-41))|(1<<(FqlParserCount-41))|(1<<(FqlParserAll-41))|(1<<(FqlParserAny-41))|(1<<(FqlParserAggregate-41))|(1<<(FqlParserEvent-41))|(1<<(FqlParserLike-41))|(1<<(FqlParserNot-41))|(1<<(FqlParserIn-41))|(1<<(FqlParserDo-41))|(1<<(FqlParserWhile-41))|(1<<(FqlParserParam-41))|(1<<(FqlParserIdentifier-41))|(1<<(FqlParserStringLiteral-41))|(1<<(FqlParserIntegerLiteral-41))|(1<<(FqlParserFloatLiteral-41))|(1<<(FqlParserNamespaceSegment-41)))) != 0) {
+				if (int64((_la-9)) & ^0x3f) == 0 && ((int64(1)<<(_la-9))&-576460752368861163) != 0 {
 					{
 						p.SetState(575)
 
@@ -11236,6 +11615,15 @@ type IPredicateContext interface {
 
 	// SetRight sets the right rule contexts.
 	SetRight(IPredicateContext)
+
+	// Getter signatures
+	ExpressionAtom() IExpressionAtomContext
+	EqualityOperator() IEqualityOperatorContext
+	AllPredicate() []IPredicateContext
+	Predicate(i int) IPredicateContext
+	ArrayOperator() IArrayOperatorContext
+	InOperator() IInOperatorContext
+	LikeOperator() ILikeOperatorContext
 
 	// IsPredicateContext differentiates from other interfaces.
 	IsPredicateContext()
@@ -11596,6 +11984,26 @@ type IExpressionAtomContext interface {
 
 	// SetRight sets the right rule contexts.
 	SetRight(IExpressionAtomContext)
+
+	// Getter signatures
+	FunctionCallExpression() IFunctionCallExpressionContext
+	RangeOperator() IRangeOperatorContext
+	Literal() ILiteralContext
+	Variable() IVariableContext
+	MemberExpression() IMemberExpressionContext
+	Param() IParamContext
+	OpenParen() antlr.TerminalNode
+	CloseParen() antlr.TerminalNode
+	ForExpression() IForExpressionContext
+	WaitForExpression() IWaitForExpressionContext
+	DispatchEventExpression() IDispatchEventExpressionContext
+	Expression() IExpressionContext
+	ErrorOperator() IErrorOperatorContext
+	MultiplicativeOperator() IMultiplicativeOperatorContext
+	AllExpressionAtom() []IExpressionAtomContext
+	ExpressionAtom(i int) IExpressionAtomContext
+	AdditiveOperator() IAdditiveOperatorContext
+	RegexpOperator() IRegexpOperatorContext
 
 	// IsExpressionAtomContext differentiates from other interfaces.
 	IsExpressionAtomContext()
@@ -12165,6 +12573,13 @@ type IArrayOperatorContext interface {
 	// SetOperator sets the operator token.
 	SetOperator(antlr.Token)
 
+	// Getter signatures
+	All() antlr.TerminalNode
+	Any() antlr.TerminalNode
+	None() antlr.TerminalNode
+	InOperator() IInOperatorContext
+	EqualityOperator() IEqualityOperatorContext
+
 	// IsArrayOperatorContext differentiates from other interfaces.
 	IsArrayOperatorContext()
 }
@@ -12309,7 +12724,7 @@ func (p *FqlParser) ArrayOperator() (localctx IArrayOperatorContext) {
 
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la-49)&-(0x1f+1)) == 0 && ((1<<uint((_la-49)))&((1<<(FqlParserNone-49))|(1<<(FqlParserAll-49))|(1<<(FqlParserAny-49)))) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&432908514180988928) != 0) {
 			var _ri = p.GetErrorHandler().RecoverInline(p)
 
 			localctx.(*ArrayOperatorContext).operator = _ri
@@ -12347,6 +12762,14 @@ type IEqualityOperatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Gt() antlr.TerminalNode
+	Lt() antlr.TerminalNode
+	Eq() antlr.TerminalNode
+	Gte() antlr.TerminalNode
+	Lte() antlr.TerminalNode
+	Neq() antlr.TerminalNode
 
 	// IsEqualityOperatorContext differentiates from other interfaces.
 	IsEqualityOperatorContext()
@@ -12462,7 +12885,7 @@ func (p *FqlParser) EqualityOperator() (localctx IEqualityOperatorContext) {
 		p.SetState(651)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<FqlParserGt)|(1<<FqlParserLt)|(1<<FqlParserEq)|(1<<FqlParserGte)|(1<<FqlParserLte)|(1<<FqlParserNeq))) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&2064384) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -12479,6 +12902,10 @@ type IInOperatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	In() antlr.TerminalNode
+	Not() antlr.TerminalNode
 
 	// IsInOperatorContext differentiates from other interfaces.
 	IsInOperatorContext()
@@ -12600,6 +13027,10 @@ type ILikeOperatorContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Like() antlr.TerminalNode
+	Not() antlr.TerminalNode
+
 	// IsLikeOperatorContext differentiates from other interfaces.
 	IsLikeOperatorContext()
 }
@@ -12720,6 +13151,11 @@ type IUnaryOperatorContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Not() antlr.TerminalNode
+	Plus() antlr.TerminalNode
+	Minus() antlr.TerminalNode
+
 	// IsUnaryOperatorContext differentiates from other interfaces.
 	IsUnaryOperatorContext()
 }
@@ -12822,7 +13258,7 @@ func (p *FqlParser) UnaryOperator() (localctx IUnaryOperatorContext) {
 		p.SetState(663)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(_la == FqlParserPlus || _la == FqlParserMinus || _la == FqlParserNot) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&4611686018477719552) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -12839,6 +13275,10 @@ type IRegexpOperatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	RegexMatch() antlr.TerminalNode
+	RegexNotMatch() antlr.TerminalNode
 
 	// IsRegexpOperatorContext differentiates from other interfaces.
 	IsRegexpOperatorContext()
@@ -12956,6 +13396,9 @@ type ILogicalAndOperatorContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	And() antlr.TerminalNode
+
 	// IsLogicalAndOperatorContext differentiates from other interfaces.
 	IsLogicalAndOperatorContext()
 }
@@ -13059,6 +13502,9 @@ type ILogicalOrOperatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Or() antlr.TerminalNode
 
 	// IsLogicalOrOperatorContext differentiates from other interfaces.
 	IsLogicalOrOperatorContext()
@@ -13164,6 +13610,11 @@ type IMultiplicativeOperatorContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Getter signatures
+	Multi() antlr.TerminalNode
+	Div() antlr.TerminalNode
+	Mod() antlr.TerminalNode
+
 	// IsMultiplicativeOperatorContext differentiates from other interfaces.
 	IsMultiplicativeOperatorContext()
 }
@@ -13266,7 +13717,7 @@ func (p *FqlParser) MultiplicativeOperator() (localctx IMultiplicativeOperatorCo
 		p.SetState(671)
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<FqlParserMulti)|(1<<FqlParserDiv)|(1<<FqlParserMod))) != 0) {
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&14680064) != 0) {
 			p.GetErrorHandler().RecoverInline(p)
 		} else {
 			p.GetErrorHandler().ReportMatch(p)
@@ -13283,6 +13734,10 @@ type IAdditiveOperatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	Plus() antlr.TerminalNode
+	Minus() antlr.TerminalNode
 
 	// IsAdditiveOperatorContext differentiates from other interfaces.
 	IsAdditiveOperatorContext()
@@ -13399,6 +13854,9 @@ type IErrorOperatorContext interface {
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
+
+	// Getter signatures
+	QuestionMark() antlr.TerminalNode
 
 	// IsErrorOperatorContext differentiates from other interfaces.
 	IsErrorOperatorContext()

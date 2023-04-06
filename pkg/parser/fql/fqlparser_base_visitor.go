@@ -1,7 +1,7 @@
-// Code generated from antlr/FqlParser.g4 by ANTLR 4.10.1. DO NOT EDIT.
+// Code generated from antlr/FqlParser.g4 by ANTLR 4.12.0. DO NOT EDIT.
 
 package fql // FqlParser
-import "github.com/antlr/antlr4/runtime/Go/antlr"
+import "github.com/antlr/antlr4/runtime/Go/antlr/v4"
 
 type BaseFqlParserVisitor struct {
 	*antlr.BaseParseTreeVisitor
